@@ -13,6 +13,7 @@
 {
     return a+b;
 }
+
 -(float) divide:(int)a by:(int)b
 {
     float result = (float)a/b;
