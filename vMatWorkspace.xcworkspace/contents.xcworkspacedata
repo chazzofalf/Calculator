@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:Calculator/Calculator.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../vMAT/vMAT.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../BlocksKit/BlocksKit.xcodeproj">
+   </FileRef>
+</Workspace>

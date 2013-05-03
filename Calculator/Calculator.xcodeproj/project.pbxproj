@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFB32ED61733494A003FB4F7 /* vMAT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB32ED51733494A003FB4F7 /* vMAT.dylib */; };
+		FFB32ED71733524F003FB4F7 /* vMAT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB32ED51733494A003FB4F7 /* vMAT.dylib */; };
 		FFECC56C172B2FEF00387D7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFECC56B172B2FEF00387D7E /* Foundation.framework */; };
 		FFECC56F172B2FEF00387D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC56E172B2FEF00387D7E /* main.m */; };
 		FFECC573172B2FEF00387D7E /* Calculator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFECC572172B2FEF00387D7E /* Calculator.1 */; };
 		FFECC580172B303F00387D7E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFECC57F172B303F00387D7E /* SenTestingKit.framework */; };
 		FFECC582172B303F00387D7E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFECC581172B303F00387D7E /* Cocoa.framework */; };
 		FFECC58C172B303F00387D7E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFECC58A172B303F00387D7E /* InfoPlist.strings */; };
-		FFECC597172B309000387D7E /* CalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC596172B309000387D7E /* CalculatorTest.m */; };
+		FFECC597172B309000387D7E /* CalculatorTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFECC596172B309000387D7E /* CalculatorTest.mm */; };
 		FFECC59A172B313400387D7E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC599172B313400387D7E /* Calculator.m */; };
 		FFECC59B172B313400387D7E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC599172B313400387D7E /* Calculator.m */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FFB32ED51733494A003FB4F7 /* vMAT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = vMAT.dylib; path = "../../../../../../Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug/vMAT.dylib"; sourceTree = "<group>"; };
 		FFECC568172B2FEF00387D7E /* Calculator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Calculator; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECC56B172B2FEF00387D7E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFECC56E172B2FEF00387D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,7 +49,7 @@
 		FFECC589172B303F00387D7E /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		FFECC58B172B303F00387D7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFECC590172B303F00387D7E /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
-		FFECC596172B309000387D7E /* CalculatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorTest.m; sourceTree = "<group>"; };
+		FFECC596172B309000387D7E /* CalculatorTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CalculatorTest.mm; sourceTree = "<group>"; };
 		FFECC598172B313400387D7E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		FFECC599172B313400387D7E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFECC56C172B2FEF00387D7E /* Foundation.framework in Frameworks */,
+				FFB32ED61733494A003FB4F7 /* vMAT.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB32ED71733524F003FB4F7 /* vMAT.dylib in Frameworks */,
 				FFECC580172B303F00387D7E /* SenTestingKit.framework in Frameworks */,
 				FFECC582172B303F00387D7E /* Cocoa.framework in Frameworks */,
 			);
@@ -75,6 +80,7 @@
 		FFECC55F172B2FEF00387D7E = {
 			isa = PBXGroup;
 			children = (
+				FFB32ED51733494A003FB4F7 /* vMAT.dylib */,
 				FFECC594172B305400387D7E /* Test Classes */,
 				FFECC56D172B2FEF00387D7E /* Calculator */,
 				FFECC587172B303F00387D7E /* UnitTests */,
@@ -154,7 +160,7 @@
 		FFECC594172B305400387D7E /* Test Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FFECC596172B309000387D7E /* CalculatorTest.m */,
+				FFECC596172B309000387D7E /* CalculatorTest.mm */,
 			);
 			name = "Test Classes";
 			sourceTree = "<group>";
@@ -265,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFECC597172B309000387D7E /* CalculatorTest.m in Sources */,
+				FFECC597172B309000387D7E /* CalculatorTest.mm in Sources */,
 				FFECC59B172B313400387D7E /* Calculator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +317,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/CTM_WORK_2/Chazz/4kaelin/vMAT/vMAT/**",
+					/usr/local/Cellar/eigen/3.1.3/include/eigen3/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -338,6 +348,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Volumes/CTM_WORK_2/Chazz/4kaelin/vMAT/vMAT/**",
+					/usr/local/Cellar/eigen/3.1.3/include/eigen3/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
@@ -348,6 +362,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -357,6 +375,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -366,9 +388,14 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -379,9 +406,14 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -406,6 +438,7 @@
 				FFECC578172B2FEF00387D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFECC591172B303F00387D7E /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +447,7 @@
 				FFECC593172B303F00387D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
