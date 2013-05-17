@@ -74,4 +74,27 @@ namespace
     196,225,1;
     STAssertEqualObjects(matX, matXv, @"Ensure equal arrays");
 }
+-(void) testVMatLoadedFileCorrectly
+{
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"cluster-normaldata-10x3-13" withExtension:@"mat"];
+    NSError *error = nil;
+    NSDictionary * workspace = vMAT_load(url, @[ @"X",@"Zv",@"Wv",@"VCv",@"VMv"], &error);
+    NSLog(@"workspace = %@",workspace);
+    vMAT_Array *X = [workspace variable:@"X"].matrix;
+    vMAT_Array *Zv = [workspace variable:@"Zv"].matrix;
+    vMAT_Array *Wv = [workspace variable:@"Wv"].matrix;
+    vMAT_Array *VCv = [workspace variable:@"VCv"].matrix;
+    vMAT_Array *VMv = [workspace variable:@"VMv"].matrix;
+    
+    STAssertNotNil(X, @"X is not supposed to be nil.");
+    STAssertNotNil(Zv, @"Zv is not supposed to be nil.");
+    STAssertNotNil(Wv, @"Wv is not supposed to be nil.");
+    STAssertNotNil(VCv, @"VCv is not supposed to be nil.");
+    STAssertNotNil(VMv, @"VMv is not supposed to be nil.");
+    NSLog(@"X = %@",X.dump);
+    NSLog(@"Zv = %@",Zv.dump);
+    NSLog(@"Wv = %@",Wv.dump);
+    NSLog(@"VCv = %@",VCv.dump);
+    NSLog(@"VMv = %@",VMv.dump);
+}
 @end

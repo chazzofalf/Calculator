@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FFB32ED61733494A003FB4F7 /* vMAT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB32ED51733494A003FB4F7 /* vMAT.dylib */; };
-		FFB32ED71733524F003FB4F7 /* vMAT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB32ED51733494A003FB4F7 /* vMAT.dylib */; };
+		FF5178CD1746EBD6004B13B3 /* cluster-normaldata-10x3-13.mat in Resources */ = {isa = PBXBuildFile; fileRef = FF5178CC1746EBD6004B13B3 /* cluster-normaldata-10x3-13.mat */; };
 		FFECC56C172B2FEF00387D7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFECC56B172B2FEF00387D7E /* Foundation.framework */; };
 		FFECC56F172B2FEF00387D7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC56E172B2FEF00387D7E /* main.m */; };
 		FFECC573172B2FEF00387D7E /* Calculator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFECC572172B2FEF00387D7E /* Calculator.1 */; };
@@ -18,6 +17,7 @@
 		FFECC597172B309000387D7E /* CalculatorTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = FFECC596172B309000387D7E /* CalculatorTest.mm */; };
 		FFECC59A172B313400387D7E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC599172B313400387D7E /* Calculator.m */; };
 		FFECC59B172B313400387D7E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECC599172B313400387D7E /* Calculator.m */; };
+		FFFC316B1746C2EF007A1D4B /* vMAT.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFC316A1746C2EF007A1D4B /* vMAT.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FFB32ED51733494A003FB4F7 /* vMAT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = vMAT.dylib; path = "../../../../../../Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug/vMAT.dylib"; sourceTree = "<group>"; };
+		FF5178CC1746EBD6004B13B3 /* cluster-normaldata-10x3-13.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cluster-normaldata-10x3-13.mat"; sourceTree = "<group>"; };
 		FFECC568172B2FEF00387D7E /* Calculator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Calculator; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFECC56B172B2FEF00387D7E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFECC56E172B2FEF00387D7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 		FFECC596172B309000387D7E /* CalculatorTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CalculatorTest.mm; sourceTree = "<group>"; };
 		FFECC598172B313400387D7E /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		FFECC599172B313400387D7E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		FFFC316A1746C2EF007A1D4B /* vMAT.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = vMAT.dylib; path = "../../../../../../../Users/chazz/Library/Developer/Xcode/DerivedData/vMatWorkspace-gciepqefjazuvcbnwqubhtviogzm/Build/Products/Debug/vMAT.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFECC56C172B2FEF00387D7E /* Foundation.framework in Frameworks */,
-				FFB32ED61733494A003FB4F7 /* vMAT.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB32ED71733524F003FB4F7 /* vMAT.dylib in Frameworks */,
+				FFFC316B1746C2EF007A1D4B /* vMAT.dylib in Frameworks */,
 				FFECC580172B303F00387D7E /* SenTestingKit.framework in Frameworks */,
 				FFECC582172B303F00387D7E /* Cocoa.framework in Frameworks */,
 			);
@@ -80,7 +80,7 @@
 		FFECC55F172B2FEF00387D7E = {
 			isa = PBXGroup;
 			children = (
-				FFB32ED51733494A003FB4F7 /* vMAT.dylib */,
+				FFFC316A1746C2EF007A1D4B /* vMAT.dylib */,
 				FFECC594172B305400387D7E /* Test Classes */,
 				FFECC56D172B2FEF00387D7E /* Calculator */,
 				FFECC587172B303F00387D7E /* UnitTests */,
@@ -150,6 +150,7 @@
 		FFECC588172B303F00387D7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF5178CC1746EBD6004B13B3 /* cluster-normaldata-10x3-13.mat */,
 				FFECC589172B303F00387D7E /* UnitTests-Info.plist */,
 				FFECC58A172B303F00387D7E /* InfoPlist.strings */,
 				FFECC590172B303F00387D7E /* UnitTests-Prefix.pch */,
@@ -236,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFECC58C172B303F00387D7E /* InfoPlist.strings in Resources */,
+				FF5178CD1746EBD6004B13B3 /* cluster-normaldata-10x3-13.mat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +397,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/vMatWorkspace-gciepqefjazuvcbnwqubhtviogzm/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -413,6 +416,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/Calculator-apaxovbpafvuqmafbhcrmplhgldt/Build/Products/Debug\"",
+					"\"/Users/chazz/Library/Developer/Xcode/DerivedData/vMatWorkspace-gciepqefjazuvcbnwqubhtviogzm/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
