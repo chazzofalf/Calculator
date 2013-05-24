@@ -51,6 +51,7 @@ namespace
 {
     STAssertThrows([calculator divide:5 by:0], @"We expected an exception to be raised when dividing by 0");
 }
+
 -(void) testVMat
 {
     const float iniM[] = {
@@ -74,7 +75,8 @@ namespace
     196,225,1;
     STAssertEqualObjects(matX, matXv, @"Ensure equal arrays");
 }
--(void) testVMatLoadedFileCorrectly
+
+-(void) testVMatLoadedSavedFileCorrectly
 {
     NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"cluster-normaldata-10x3-13" withExtension:@"mat"];
     NSError *error = nil;
@@ -86,15 +88,36 @@ namespace
     vMAT_Array *VCv = [workspace variable:@"VCv"].matrix;
     vMAT_Array *VMv = [workspace variable:@"VMv"].matrix;
     
+    //Check if we loaded the matrices properly.
     STAssertNotNil(X, @"X is not supposed to be nil.");
     STAssertNotNil(Zv, @"Zv is not supposed to be nil.");
     STAssertNotNil(Wv, @"Wv is not supposed to be nil.");
     STAssertNotNil(VCv, @"VCv is not supposed to be nil.");
     STAssertNotNil(VMv, @"VMv is not supposed to be nil.");
+    //Peek at the contents of the Matricies
     NSLog(@"X = %@",X.dump);
     NSLog(@"Zv = %@",Zv.dump);
     NSLog(@"Wv = %@",Wv.dump);
     NSLog(@"VCv = %@",VCv.dump);
     NSLog(@"VMv = %@",VMv.dump);
+    //Convert the Matrix To a obj-c usable form.
+    Mat<float> XMat = X;
+    Matrix<float,Eigen::Dynamic,Eigen::Dynamic> XMatMat = XMat;
+    //Run a simple operation on it.
+    XMatMat.cwiseProduct(XMatMat);
+    //Convert it back to vMat.
+    vMAT_Array *Xsquared = vMAT_cast(XMatMat);
+    vMAT_MATv5Variable *var = [vMAT_MATv5Variable variableWithArray:Xsquared arrayFlags:0 name:@"Xsquared" ];
+    //vMAT_MATv5NumericArray *array = [[vMAT_MATv5NumericArray alloc] init];
+    NSMutableDictionary *XsquaredWorkspaceEditor = [[NSMutableDictionary alloc] init];
+    [XsquaredWorkspaceEditor  setValue:var forKey:@"Xsquared"];
+    NSURL *urlOut = [NSURL fileURLWithPath:@"Xsquare.mat"];
+    NSLog(@"URL = %@",urlOut);
+    vMAT_save(urlOut, XsquaredWorkspaceEditor, &error);
+    NSDictionary *workspaceReload = vMAT_load(urlOut, @[@"Xsquared"], &error);
+    vMAT_Array *reload = [workspaceReload variable:@"Xsquared"].matrix;
+    STAssertEqualObjects(Xsquared  , reload, @"Xsquared might not be saved correctly");
+    
+    
 }
 @end
