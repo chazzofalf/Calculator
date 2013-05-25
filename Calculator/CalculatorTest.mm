@@ -111,12 +111,34 @@ namespace
     //vMAT_MATv5NumericArray *array = [[vMAT_MATv5NumericArray alloc] init];
     NSMutableDictionary *XsquaredWorkspaceEditor = [[NSMutableDictionary alloc] init];
     [XsquaredWorkspaceEditor  setValue:var forKey:@"Xsquared"];
-    NSURL *urlOut = [NSURL fileURLWithPath:@"Xsquare.mat"];
+    NSURL *urlOut = [NSURL fileURLWithPath:@"Xsquared.mat"];
     NSLog(@"URL = %@",urlOut);
     vMAT_save(urlOut, XsquaredWorkspaceEditor, &error);
     NSDictionary *workspaceReload = vMAT_load(urlOut, @[@"Xsquared"], &error);
     vMAT_Array *reload = [workspaceReload variable:@"Xsquared"].matrix;
+    
+    
     STAssertEqualObjects(Xsquared  , reload, @"Xsquared might not be saved correctly");
+    vMAT_Array *transposed = vMAT_mtrans(X);
+    var = [vMAT_MATv5Variable variableWithArray:transposed arrayFlags:0 name:@"Xtrans"];
+    urlOut = [NSURL fileURLWithPath:@"Xtrans.mat"];
+    XsquaredWorkspaceEditor = [[NSMutableDictionary alloc] init];
+    [XsquaredWorkspaceEditor setValue:var forKey:@"Xtrans"];
+    vMAT_save(urlOut,XsquaredWorkspaceEditor,&error);
+    vMAT_Array * matXv = [vMAT_Array arrayWithSize:vMAT_MakeSize(4,3) type:miSINGLE];
+    Mat<float> Xv = matXv;
+    Xv << 4,9,169,
+    121,100,64,
+    49,36,144,
+    196,225,1;
+    var = [vMAT_MATv5Variable variableWithArray:matXv arrayFlags:0 name:@"Xv"];
+    urlOut = [NSURL fileURLWithPath:@"Xv.mat"];
+    XsquaredWorkspaceEditor = [[NSMutableDictionary alloc] init];
+    [XsquaredWorkspaceEditor setValue:var forKey:@"Xv"];
+    vMAT_save(urlOut,XsquaredWorkspaceEditor,&error);
+
+    
+    NSLog(@"X Transposed = %@",transposed.dump);
     
     
 }
