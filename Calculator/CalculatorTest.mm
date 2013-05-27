@@ -142,4 +142,34 @@ namespace
     
     
 }
+
+-(void) testVMATCluster
+{
+    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"cluster-normaldata-10x3-13" withExtension:@"mat"];
+    NSError *error = nil;
+    NSDictionary *loadedVars = vMAT_load(url, @[@"X",@"XVc",@"VMv",@"Zv",@"Xv",@"Wv"], &error);
+    vMAT_Array *Xorig = [loadedVars variable:@"X"].matrix;
+    vMAT_Array *xVcOrig = [loadedVars variable:@"XVc"].matrix;
+    vMAT_Array *vMVvOrig = [loadedVars variable:@"VMv"].matrix;
+    vMAT_Array *zVOrig = [loadedVars variable:@"Zv"].matrix;
+    vMAT_Array *xVOrig = [loadedVars variable:@"Xv"].matrix;
+    vMAT_Array *wVOrig = [loadedVars variable:@"Wv"].matrix;
+    vMAT_Array *Y = vMAT_pdist(Xorig);
+    NSLog(@"X Original=\nn%@",Xorig.dump);
+    NSLog(@"Y=\n%@",Y.dump);
+    //PDist gives unexpected results? gives a vector of 3 inifinities
+    vMAT_Array *Z = vMAT_linkage(Y);
+    NSLog(@"Z=\n%@",Z.dump);
+    Mat<float> Zmat = Z;
+    MatrixXf ZmatMat = Zmat;
+    MatrixXf ZmatMatTrans = ZmatMat.transpose();
+    MatrixXf ZvMatMatTrans(ZmatMatTrans.rows(),3);
+    ZvMatMatTrans << ZmatMatTrans.block(0,0,ZmatMatTrans.rows(),2)-MatrixXf::Constant(ZmatMatTrans.rows(), 2, 1),ZmatMatTrans.block(0, 2, ZmatMatTrans.rows(), 1);
+    MatrixXf ZvMatMatUnTrans = ZvMatMatTrans.transpose();
+    Mat<float> ZvMat = vMAT_cast(ZvMatMatUnTrans);
+    vMAT_Array *Zv = ZvMat;
+    NSLog(@"Zv=\n%@",Zv.dump);
+    int i = 5;
+    STAssertEqualObjects(zVOrig, Zv, [NSString stringWithFormat:@"Zv dues not match.\nExpected Results:\n%@\nActual Results:\n%@",zVOrig.dump,Zv.dump]);
+}
 @end
