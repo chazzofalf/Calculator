@@ -21,7 +21,134 @@ namespace
     Calculator *calculator;
 }
 @end
+@class SaveVars;
+@interface SaveVars : NSObject
+{
+    @protected
+    vMAT_Array *_x;
+    @protected
+    vMAT_Array *_y;
+    @protected
+    vMAT_Array *_z;
+    @protected
+    vMAT_Array *_zv;
+    @protected
+    vMAT_Array *_wv;
+    @protected
+    vMAT_Array *_zw;
+    @protected
+    vMAT_Array *_vcv;
+    @protected
+    vMAT_Array *_vmv;
+    @protected
+    NSError *_error;
+    @protected
+    NSException *_exception;
+}
+@property (readwrite,nonatomic,retain) vMAT_Array *x;
+@property (readwrite,nonatomic,retain) vMAT_Array *y;
+@property (readwrite,nonatomic,retain) vMAT_Array *z;
+@property (readwrite,nonatomic,retain) vMAT_Array *zv;
+@property (readwrite,nonatomic,retain) vMAT_Array *wv;
+@property (readwrite,nonatomic,retain) vMAT_Array *zw;
+@property (readwrite,nonatomic,retain) vMAT_Array *vcv;
+@property (readwrite,nonatomic,retain) vMAT_Array *vmv;
+@property (readonly,nonatomic,retain) NSError *error;
+@property (readonly,nonatomic,retain) NSException *exception;
+-(void) save;
+@end
+@implementation SaveVars
+@synthesize x = _x;
+@synthesize y = _y;
+@synthesize z = _z;
+@synthesize zv = _zv;
+@synthesize wv = _wv;
+@synthesize zw = _zw;
+@synthesize vcv = _vcv;
+@synthesize vmv = _vmv;
+@synthesize error = _error;
+@synthesize exception = _exception;
+-(void) save
+{
+    NSArray *objects = @[_x,_y,_z,_zv,_wv,_zw,_vcv,_vmv];
+    NSArray *names = @[@"X",@"Y",@"Z",@"Zv",@"Wv",@"Zw",@"Vcv",@"Vmv"];
+    NSMutableDictionary *workspace = [[NSMutableDictionary alloc] init];
+    @try {
+        for (int i=0;i<[names count];i++)
+        {
+            vMAT_Array *currentValue = [objects objectAtIndex:i];
+            NSString *name = [names objectAtIndex:i];
+            vMAT_MATv5Variable *var = [vMAT_MATv5Variable variableWithArray:currentValue arrayFlags:0 name:name];
+            [workspace setObject:var forKey:name];
+        }
+        NSURL *outputURL = [NSURL fileURLWithPath:@"output.mat"];
+        NSError *error = nil;
+        vMAT_save(outputURL, workspace, &error);
+        _error = error;
+    }
+    @catch (NSException *exception) {
+        _exception = exception;
+    }
+    @finally {
+        
+    }
+    
+}
+@end
 @class LoadedVars;
+@interface LoadedVars : NSObject
+{
+@protected
+    vMAT_Array *_x;
+@protected
+    vMAT_Array *_zv;
+@protected
+    vMAT_Array *_wv;
+@protected
+    vMAT_Array *_vcv;
+@protected
+    vMAT_Array *_vmv;
+@protected
+    NSError *_error;
+}
+-(id) initByLoading;
+@property (readonly,nonatomic,retain) vMAT_Array *x;
+@property (readonly,nonatomic,retain) vMAT_Array *zv;
+@property (readonly,nonatomic,retain) vMAT_Array *wv;
+@property (readonly,nonatomic,retain) vMAT_Array *vcv;
+@property (readonly,nonatomic,retain) vMAT_Array *vmv;
+@property (readonly,nonatomic,retain) NSError *error;
+@end
+@implementation LoadedVars
+@synthesize x = _x;
+@synthesize zv = _zv;
+@synthesize wv = _wv;
+@synthesize vcv = _vcv;
+@synthesize vmv = _vmv;
+@synthesize error = _error;
+-(id) initByLoading
+{
+    
+    if (self != nil)
+    {
+        NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"cluster-normaldata-10x3-13" withExtension:@"mat"];
+        NSError *error = nil;
+        NSDictionary * workspace = vMAT_load(url, @[ @"X",@"Zv",@"Wv",@"VCv",@"VMv"], &error);
+        _error = error;
+        if (_error == nil)
+        {
+            _x = [workspace variable:@"X"].matrix;
+            _zv = [workspace variable:@"Zv"].matrix;
+            _wv = [workspace variable:@"Wv"].matrix;
+            _vcv = [workspace variable:@"VCv"].matrix;
+            _vmv = [workspace variable:@"VMv"].matrix;
+        }
+        
+        
+    }
+    return self;
+}
+@end
 @implementation CalculatorTest
 -(void)setUp
 {
@@ -151,49 +278,22 @@ namespace
 }
 -(vMAT_Array *)transpose: (vMAT_Array *)input
 {
-    Mat<float> inputSim = input;
-    MatrixXf inputSimMat = inputSim;
-    MatrixXf inputSimTransMat = inputSimMat.transpose();
+    Mat<double> inputSim = input;
+    MatrixXd inputSimMat = inputSim;
+    MatrixXd inputSimTransMat = inputSimMat.transpose();
     vMAT_Array *trans = vMAT_cast(inputSimTransMat);
     return trans;
 }
+-(void) testVMatCluster
+{
+    LoadedVars *vars = [[LoadedVars alloc] initByLoading];
+    SaveVars *saveVars = [[SaveVars alloc] init];
+    saveVars.x = vars.x;
+    NSLog(@"X = %@",saveVars.x.dump);
+    vMAT_Array *x_ = [self transpose:saveVars.x];
+    NSLog(@"X' = %@",x_.dump);
+    saveVars.y = vMAT_pdist(x_);
+    NSLog(@"Y = %@",saveVars.y.dump);
+}
+@end
 
-@end
-@interface LoadedVars : NSObject
-{
-    @protected
-    vMAT_Array *_x;
-    @protected
-    vMAT_Array *_zv;
-    @protected
-    vMAT_Array *_wv;
-    @protected
-    vMAT_Array *_vcv;
-    @protected
-    vMAT_Array *_vmv;
-    @protected
-    NSError *_error;
-}
--(id) initByLoading;
-@end
-@implementation LoadedVars
--(id) initByLoading
-{
-    
-    if (self != nil)
-    {
-        NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"cluster-normaldata-10x3-13" withExtension:@"mat"];
-        NSError *error = nil;
-        NSDictionary * workspace = vMAT_load(url, @[ @"X",@"Zv",@"Wv",@"VCv",@"VMv"], &error);
-        _error = error;
-        if (_error == nil)
-        {
-                _x = [workspace variable:@"X"].matrix;
-            
-        }
-        
-        
-    }
-    return self;
-}
-@end
